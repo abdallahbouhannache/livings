@@ -1,7 +1,9 @@
 .DS_Store
 node_modules
 /dist
-
+/src/assets/*
+/public/bulma-0.8.2/*
+/public/fontawesome-free-5.13.0-web/*
 # local env files
 .env.local
 .env.*.local
