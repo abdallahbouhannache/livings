@@ -1,3 +1,4 @@
+/*  */
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -60,8 +61,8 @@ export default {
 <style scoped>
 .navbar {
   width: 80vw;
-  border: 1px solid rgb(25, 34, 160);
-  border-width: 1px 1px 0 1px;
+  /* border: 1px solid rgb(25, 34, 160);
+  border-width: 1px 1px 0 1px; */
 }
 a.navitem:hover {
   background-color: #00d1b2 !important;

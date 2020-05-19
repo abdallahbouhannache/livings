@@ -63,7 +63,7 @@ export default {
   width: 80vw;
   margin-top: 15px;
   padding: 20px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 .level-left {
   display: flex;

@@ -1,8 +1,11 @@
 <template>
   <!-- head component of navigation ^ -->
   <div class="navigationPanel">
-    <!--search div -->
+    <!--search top bar div -->
     <Search />
+    <div class="is-divider"></div>
+
+    <!--navbar menu  lowersection  div -->
     <NavMenu />
   </div>
 </template>
@@ -47,5 +50,11 @@ export default {
 .field {
   border: 2px solid green;
   flex: 0.4;
+}
+.is-divider {
+  width: 100%;
+  border: 0.6px solid black;
+  position: relative;
+  top: -25px;
 }
 </style>

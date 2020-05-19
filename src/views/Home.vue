@@ -16,6 +16,10 @@ export default {
 
 <style lang="css">
 .mainwrapper {
+  /* background-color: #fafafa; */
+  background-image: url("../assets/pictures/bg.jpeg");
+  background-attachment: fixed;
+  background-size: contain;
   position: relative;
   display: flex;
   flex-direction: row;
