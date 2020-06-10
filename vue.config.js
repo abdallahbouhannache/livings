@@ -1,3 +1,10 @@
 module.exports = {
-  runtimeCompiler: true
+  runtimeCompiler: true,
+/*  dev:{
+    assetsSubDirectory:"src/assets",
+    assetsPublicPath: '/',
+  }*/
+  // build:{
+    
+  // }
 }

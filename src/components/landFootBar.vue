@@ -2,14 +2,17 @@
 <template>
   <div class="hero is-primary">
     <div class="lContainer" v>
-      <h1 class="title" v-if="titleh">{{titlef}}</h1>
+      <h1 class="title" v-if="titleC">{{ titleF }}</h1>
       <div class="counters">
-        <Counter />
+        <Counter :cData="counterData" />
         <!-- with number -->
-        <Counter />
+        <Counter :cData="counterData" />
         <!-- with percentage -->
       </div>
-      <button class="button is-info is-focused voirBtn">
+      <button
+        class="button is-info is-focused voirBtn"
+        @click="$emit('check-product')"
+      >
         <span class>Voir</span>
         <span class="icon is-small">
           <i class="fas fa-exclamation"></i>
@@ -24,23 +27,37 @@ import Counter from "../components/Counter";
 export default {
   name: "landFootBar",
   components: {
-    Counter
+    Counter,
   },
   props: {
-    titlef: {
+    titleC: {
+      type: Boolean,
+      default: false,
+    },
+    titleF: {
       type: String,
-      default: "counselling & psychotherapy level 3 diploma course"
+      default: "empty",
     },
     percentage: {
       type: Number,
-      default: 55
-    }
+      default: 55,
+    },
   },
   data() {
     return {
-      numbersaves: 44
+      numbersaves: 44,
+      counterData: {
+        identifier: "default",
+        value: 1040,
+      },
     };
-  }
+  },
+  methods: {
+    /* open post/page by navigation using vue router */
+    openPost(e) {
+      console.log(e);
+    },
+  },
 };
 </script>
 

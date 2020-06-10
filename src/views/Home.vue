@@ -5,6 +5,7 @@
 </template>
 
 <script>
+// import { mapGetters } from "vuex";
 import Landing from "../layout/Landing";
 export default {
   name: "Home",

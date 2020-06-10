@@ -1,12 +1,18 @@
-
 /* the left side wrapper */
 
 <template>
   <div class="LeftproductsWrp">
-    <section class="tile is-full box is-parent" v-for="prod in products" :key="prod">
+    <section class="tile is-vertical is-full is-parent">
       <!-- the picture component -->
 
-      <product />
+      <product
+        class="box"
+        v-for="(prod,index) in Lproducts"
+        :key="index"
+        :hdTitle="prod.hdTitle"
+        :subhdT="prod.subhdT"
+        :picBgUrl="prod.picBgUrl"
+      ></product>
       <!-- the picture component END -->
       <!-- the picture component -->
 
@@ -22,20 +28,45 @@
 </template>
 
 <script>
-import product from "../components/product";
+import Product from "../components/product";
 
 export default {
   name: "LeftLand",
   components: {
-    product
+    Product
   },
   data() {
     return {
       messages: ["hello", "vue", "js"],
-      products: 6
+      Lproducts: [
+        {
+          hdTitle: "11counselling ",
+          subhdT: "11£14 level 3 online course from Alpha Academy - save 96%",
+          picBgUrl: "blank.jpg"
+        }
+      ]
     };
   },
-  props: {}
+  props: {
+    products: {
+      type: Object,
+      default: () => [
+        {
+          hdTitle: "11counselling ",
+          subhdT: "11£14 level 3 online course from Alpha Academy - save 96%",
+          picBgUrl: "blank.jpg"
+        },
+        {
+          hdTitle: "11counselling & 3 diploma course",
+          subhdT: "for a counselling and psychotherapy diploma level ",
+          picBgUrl: "blank.jpg"
+        }
+      ]
+    }
+  },
+  mounted() {
+    this.Lproducts = this.products;
+  }
 };
 </script>
 

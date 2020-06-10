@@ -63,6 +63,8 @@ export default {
 }
 .subhdt2A {
   flex: 1.4;
+  position: relative;
+  left: -0.5%;
 }
 .subhdt2B {
   flex: 0.5;

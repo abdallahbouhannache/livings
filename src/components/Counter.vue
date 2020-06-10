@@ -11,23 +11,34 @@ import AnimatedNumber from "animated-number-vue";
 
 export default {
   components: {
-    AnimatedNumber
+    AnimatedNumber,
   },
   props: {
-    identifier: { type: String, default: "bought" },
-    value: { type: Number, default: 1040 }
+    cData: {
+      type: Object,
+      default: () => {
+        return {
+          identifier: "bought",
+          value: 1041,
+        };
+      },
+    },
   },
   data() {
     return {
-      vals: 1040,
-      identis: "bought"
+      identifier: "",
+      value: 0,
     };
   },
   methods: {
     formatToPrice(value) {
       return `${this.identifier} ${value} `;
-    }
-  }
+    },
+  },
+  mounted() {
+    this.identifier = this.cData.identifier;
+    this.value = this.cData.value;
+  },
 };
 </script>
 

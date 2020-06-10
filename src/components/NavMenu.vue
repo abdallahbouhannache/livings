@@ -2,13 +2,13 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
+      <router-link :to="{ path: 'https://bulma.io' }" class="navbar-item">
         <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" />
-      </a>
+      </router-link>
 
       <a
         role="button"
-        class="navbar-burger burger"
+        class="navbar-b urger burger"
         aria-label="menu"
         aria-expanded="false"
         data-target="navbarBasicExample"
@@ -21,19 +21,18 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
-        <a class="navbar-item navitem">Home</a>
-
-        <a class="navbar-item navitem">Documentation</a>
-
+        <router-link :to="{ path: 'shops' }" class="navbar-item navitem">shops</router-link>
+        <router-link :to="{ path: 'Watches' }" class="navbar-item navitem">Watches</router-link>
         <div class="navbar-item navitem has-dropdown is-hoverable">
-          <a class="navbar-link navitem">More</a>
-
+          <router-link :to="{ path: 'More' }" class="navbar-item navitem">More</router-link>
           <div class="navbar-dropdown">
-            <a class="navbar-item navitem">About</a>
-            <a class="navbar-item navitem">Jobs</a>
-            <a class="navbar-item navitem">Contact</a>
+            <router-link :to="{ path: 'Electronics' }" class="navbar-item navitem">Electronics</router-link>
+            <router-link :to="{ path: 'Health' }" class="navbar-item navitem">Health</router-link>
+            <router-link :to="{ path: 'Jewellery' }" class="navbar-item navitem">Jewellery</router-link>
+            <router-link :to="{ path: 'Watches' }" class="navbar-item navitem">Watches</router-link>
+            <router-link :to="{ path: 'About' }" class="navbar-item navitem">About</router-link>
             <hr class="navbar-divider" />
-            <a class="navbar-item navitem">Report an issue</a>
+            <router-link :to="{ path: 'Issue' }" class="navbar-item navitem">Report an issue</router-link>
           </div>
         </div>
       </div>
@@ -41,10 +40,21 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
+            <router-link v-if="!authenticated" :to="{ path: 'Register' }" class="button is-primary">
               <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">Log in</a>
+            </router-link>
+            <router-link
+              class="button is-light"
+              v-if="authenticated"
+              :to="{ path: '/' }"
+              v-on:click.native="logout()"
+            >Logout</router-link>
+            <router-link
+              class="button is-light"
+              v-if="!authenticated"
+              :to="{ path: 'Login' }"
+              v-on:click.native="logout()"
+            >Login</router-link>
           </div>
         </div>
       </div>
@@ -54,7 +64,25 @@
 
 <script>
 export default {
-  name: "NavMenu"
+  name: "NavMenu",
+  data() {
+    return {
+      authenticated: false,
+      mockAccount: {
+        username: "userX",
+        password: "password"
+      }
+    };
+  },
+
+  methods: {
+    setAuthenticated(status) {
+      this.authenticated = status;
+    },
+    logout() {
+      this.authenticated = false;
+    }
+  }
 };
 </script>
 

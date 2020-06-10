@@ -1,7 +1,7 @@
 <template>
   <div class="tile is-child">
     <header class="card-header">
-      <p class="card-header-title">{{hdTitle}}</p>
+      <p class="card-header-title">{{ hdTitle }}</p>
       <!-- <a href="#" class="card-header-icon" aria-label="more options">
           <span class="icon">
             <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -12,9 +12,9 @@
       <img class="is-rounded" :src="sticker" />
     </figure>-->
 
-    <StickerInfo clss="sticker_price" sticker="sticker.jpg" />
+    <StickerInfo clss="sticker_price" :lSticker="sticker" :stickdata="stickerData" />
 
-    <figure class="image is-4by3">
+    <figure class="image is-4by3" v-on:click="printme">
       <img :src="picUrl" alt="Placeholder image" />
     </figure>
 
@@ -23,16 +23,18 @@
       <a href="#" class="card-footer-item">Edit</a>
       <a href="#" class="card-footer-item">Delete</a>
     </footer>-->
-    <landFootBar />
+
+    <landFootBar @check-product="checkProduct" />
   </div>
 </template>
 
 <script>
 import landFootBar from "../components/landFootBar";
 import StickerInfo from "../components/StickerInfo";
+import { mapState } from "vuex";
 
 export default {
-  name: "product",
+  name: "Product",
   components: {
     landFootBar,
     StickerInfo
@@ -54,11 +56,42 @@ export default {
   data() {
     return {
       pic: require("../assets/img/a.jpg"),
-      sticker: require("../assets/img/sticker.jpg")
+      stickerData: {
+        price: 100.02,
+        discount: 10
+      },
+      sticker: "../assets/img/sticker.jpg",
+      productData: {}
     };
+  },
+  created() {
+    // console.log("fefezfzef")
+    this.sticker = require("../assets/img/sticker.jpg");
+  },
+  computed: mapState({
+    // arrow functions can make the code very succinct!
+    productS: state => state.Product.state,
+
+    // passing the string value 'count' is same as `state => state.count`
+    productAlias: "productS",
+
+    // to access local state with `this`, a normal function must be used
+    getProductS(state) {
+      return state;
+    }
+  }),
+
+  // console: () => console,
+  // window: () => window
+  methods: {
+    printme() {
+      console.log(this.productS);
+    },
+    checkProduct() {
+      console.log("product");
+    }
   }
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
