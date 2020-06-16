@@ -8,7 +8,8 @@
         :key="index"
         :hdTitle="prod.hdTitle"
         :subhdT="prod.subhdT"
-        :picBgUrl="prod.picBgUrl"
+        :picBgUrl="prod.RpicUrl"
+        :videoUrl="prod.videoUrl"
       ></productR>
     </section>
   </div>
@@ -27,19 +28,20 @@ export default {
 
     /* the productArray props */
     prodList: {
-      type: Object,
+      type: Array,
       default: () => [
         {
-          hdTitle: "11counselling & psychotherapy level 3 diploma course",
-          subhdT:
-            "11£14 instead of £318 for a counselling and psychotherapy diploma level 3 online course from Alpha Academy - save 96%",
-          picBgUrl: "blank.jpg"
-        },
-        {
-          hdTitle: "11counselling & psychotherapy level 3 diploma course",
-          subhdT:
-            "11£14 instead of £318 for a counselling and psychotherapy diploma level 3 online course from Alpha Academy - save 96%",
-          picBgUrl: "blank.jpg"
+          LhdTitle: "",
+          RpicUrl: "",
+          picBgUrl: "blank.jpg",
+          id: 0,
+          downloads: 0,
+          subhdT: "",
+          videoUrl: "",
+          stickerData: {
+            price: 1,
+            discount: 0
+          }
         }
       ]
     }
@@ -52,8 +54,8 @@ export default {
       //   price: 200.02,
       //   discount: 51
       // },
-      fBg: "",
-      listOfPrds1: 5,
+      // fBg: "",
+      // listOfPrds1: 5,
       // productData: {
       //   hdTitle: {
       //     type: String,
@@ -69,10 +71,17 @@ export default {
       /* localArray of products */
       listOfPrds: [
         {
-          hdTitle: "11counselling & psychotherapy level 3 diploma course",
-          subhdT:
-            "11£14 instead of £318 for a counselling and psychotherapy diploma level 3 online course from Alpha Academy - save 96%",
-          picBgUrl: "blank.jpg"
+          LhdTitle: "",
+          RpicUrl: "",
+          picBgUrl: "blank.jpg",
+          id: 0,
+          downloads: 0,
+          subhdT: "",
+          videoUrl: "",
+          stickerData: {
+            price: 1,
+            discount: 0
+          }
         }
       ]
     };
@@ -96,6 +105,11 @@ export default {
     setTimeout(() => {
       this.init();
     }, 500);
+  },
+  watch: {
+    prodList: function() {
+      this.init();
+    }
   }
 };
 </script>

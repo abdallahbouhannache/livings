@@ -1,7 +1,7 @@
 <template>
   <div class="counterVw is-primary">
     <span class="identifier">{{ identifier }}</span>
-    <i class="icon" v-if="value > 1000">
+    <i :class="{'icon':percentage}">
       <animated-number :value="value" :duration="300" />
     </i>
   </div>
@@ -11,7 +11,7 @@ import AnimatedNumber from "animated-number-vue";
 
 export default {
   components: {
-    AnimatedNumber,
+    AnimatedNumber
   },
   props: {
     cData: {
@@ -19,26 +19,31 @@ export default {
       default: () => {
         return {
           identifier: "bought",
-          value: 1041,
+          value: 1041
         };
-      },
+      }
     },
+    percentage: { type: Boolean, default: false }
   },
   data() {
     return {
       identifier: "",
       value: 0,
+      Lpercentage: false
     };
   },
   methods: {
     formatToPrice(value) {
       return `${this.identifier} ${value} `;
-    },
+    }
   },
-  mounted() {
-    this.identifier = this.cData.identifier;
-    this.value = this.cData.value;
-  },
+  mounted() {},
+  watch: {
+    cData: function() {
+      this.identifier = this.cData.identifier;
+      this.value = this.cData.value;
+    }
+  }
 };
 </script>
 

@@ -5,14 +5,17 @@
     <section class="tile is-vertical is-full is-parent">
       <!-- the picture component -->
 
-      <product
+      <ProductL
         class="box"
         v-for="(prod,index) in Lproducts"
         :key="index"
-        :hdTitle="prod.hdTitle"
+        :hdTitle="prod.LhdTitle"
         :subhdT="prod.subhdT"
-        :picBgUrl="prod.picBgUrl"
-      ></product>
+        :picUrl="prod.LpicBgUrl"
+        :RpicUrl="prod.RpicUrl"
+        :sticker="prod.Lsticker"
+        :stickerData="prod.stickerData"
+      ></ProductL>
       <!-- the picture component END -->
       <!-- the picture component -->
 
@@ -28,44 +31,64 @@
 </template>
 
 <script>
-import Product from "../components/product";
+import ProductL from "../components/productL";
 
 export default {
   name: "LeftLand",
   components: {
-    Product
+    ProductL
   },
   data() {
     return {
       messages: ["hello", "vue", "js"],
       Lproducts: [
         {
-          hdTitle: "11counselling ",
-          subhdT: "11£14 level 3 online course from Alpha Academy - save 96%",
-          picBgUrl: "blank.jpg"
+          LhdTitle: "lfLocal 11counselling ",
+          subhdT: "lfLocal  online course from Alpha Academy - save 96%",
+          LpicBgUrl: "assets/img/blank",
+          Lsticker: "assets/img/blank",
+          RpicUrl: "",
+          stickerData: {
+            price: 200.02,
+            discount: 57
+          }
         }
       ]
     };
   },
   props: {
     products: {
-      type: Object,
+      type: Array,
       default: () => [
         {
-          hdTitle: "11counselling ",
-          subhdT: "11£14 level 3 online course from Alpha Academy - save 96%",
-          picBgUrl: "blank.jpg"
+          LhdTitle: "",
+          subhdT: "",
+          LpicBgUrl: "assets/img/f",
+          RpicUrl: "",
+          Lsticker: "assets/img/f",
+          stickerData: {
+            price: 300.02,
+            discount: 56
+          }
         },
         {
-          hdTitle: "11counselling & 3 diploma course",
-          subhdT: "for a counselling and psychotherapy diploma level ",
-          picBgUrl: "blank.jpg"
+          LhdTitle: "",
+          subhdT: "",
+          LpicBgUrl: "assets/img/f",
+          RpicUrl: "",
+          Lsticker: "assets/img/f",
+          stickerData: {
+            price: 300.02,
+            discount: 56
+          }
         }
       ]
     }
   },
   mounted() {
+    // this.Lproducts = Array.from([...this.products]);
     this.Lproducts = this.products;
+    // console.log(this.Lproducts);
   }
 };
 </script>

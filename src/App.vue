@@ -8,12 +8,15 @@
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
 // const { mapGetters } = createNamespacedHelpers("");
 import Navigation from "./components/Navigation";
+
 export default {
   name: "App",
-  components: { Navigation }
+  components: { Navigation },
+  methods: {},
+  computed: {},
+  mounted() {}
 };
 </script>
 

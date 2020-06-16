@@ -1,13 +1,9 @@
 <template>
-  <figure @click="()=>{ 
-    
-      console.log(this)
-    
-    }" :class="['image is-64x64', clss]">
-    <img class="is-rounded stickPic"  :src="lSticker" />
+  <figure @click="getOffer()" :class="['image is-64x64', clss]">
+    <img class="is-rounded stickPic" :src="lSticker" />
     <span class="stInfos">
-    <p>{{price}}</p>
-    <p>{{discount}}</p>
+      <p>{{price}}</p>
+      <p>{{discount}}</p>
     </span>
   </figure>
 
@@ -16,37 +12,52 @@
 
 <script>
 export default {
-  name:"StickerInfo",
-  data:()=>{
-return {
-  // stickerPicUrl:"../assets/img/sticker.jpg"
-  price:0,
-  discount:0
-}
-  },
+  name: "StickerInfo",
   props: {
-    lSticker: { type: String, default:require("../assets/img/sticker.jpg") },
+    lSticker: { type: String, default: require("../assets/img/sticker.jpg") },
     clss: { type: String, default: "sticker_RL" },
-    stickdata:{type:Object, default () {
+    stickerData: {
+      type: Object,
+      default() {
         return {
           price: 0,
           discount: 0
-        }
-      }}
+        };
+      }
+    }
   },
-   created() {
-     console.log('created')
-    //  this.stickerPicUrl=require(this.lSticker) 
-    // this.discount=this.stickdata["discount"]
+  data: () => {
+    return {
+      stickerPicUrl: "../assets/img/sticker.jpg",
+      price: 0,
+      discount: 0
+    };
+  },
+  methods: {
+    getOffer: () => {
+      console.log("clicked");
+    }
+  },
+  created() {},
+  mounted() {},
+
+  computed: {
+    console: () => console,
+    window: () => window
+
+    // updateData: () => {
+    //   this.price = this.stickerData.price;
+    //   this.discount = this.stickerData.discount;
+    // }
+  },
+  watch: {
+    stickerData: function() {
+      this.discount = this.stickerData["discount"];
+      this.price = this.stickerData["price"];
     },
-    mounted(){
-    console.clear()
-    this.price=this.stickdata.price
-    this.discount=this.stickdata.discount
-    },
-  computed:{
-  console: () => console,
-  window: () => window,
+    lSticker: function() {
+      this.stickerPicUrl = this.lSticker;
+    }
   }
 };
 </script>
@@ -59,18 +70,20 @@ return {
   z-index: 8;
 }
 .sticker_price {
-    position: relative;
-    top: calc(100% - 200px);
-    z-index: 478;
-    left: 74%;
+  position: relative;
+  top: calc(100% - 200px);
+  z-index: 478;
+  left: 74%;
 }
-.stickPic{
+.stickPic {
   z-index: -10;
 }
-.stickinfo{
-  color:#fff;
+.stickinfo {
+  color: #fff;
   z-index: 5555;
   /* border:1px solid red; */
 }
-.stInfos>*{color:#fff}
+.stInfos > * {
+  color: #fff;
+}
 </style>

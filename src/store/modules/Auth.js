@@ -1,17 +1,14 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
 import axios from 'axios'
 
-Vue.use(Vuex)
 
-export default new Vuex.Store({
-	namespaced:true,
+export default {
+	namespaced: true,
 	/* state */
 	state: {
 		authenticated: false,
 		authError: null
 	},
-/* mutations */
+	/* mutations */
 	mutations: {
 		AuthUser(state) {
 			state.authenticated = true
@@ -24,30 +21,44 @@ export default new Vuex.Store({
 
 	/* actions */
 	actions: {
-		signin({ commit }, { email, password }) {
+		signin({
+			commit
+		}, {
+			email,
+			password
+		}) {
 			axios
 				.post('/auth/signin', {
 					email,
 					password
 				})
 				.then(res => saveToken(res.data.token, commit))
-				.catch(({ response }) => {
+				.catch(({
+					response
+				}) => {
 					commit('AuthError', response.data)
 				})
 		},
-		signup({ commit }, { email, password }) {
+		signup({
+			commit
+		}, {
+			email,
+			password
+		}) {
 			axios
 				.post('/auth/signup', {
 					email,
 					password
 				})
 				.then(res => saveToken(res.data.token, commit))
-				.catch(({ response }) => {
+				.catch(({
+					response
+				}) => {
 					commit('AuthError', response.data)
 				})
 		}
 	}
-})
+}
 
 function saveToken(token, cb) {
 	localStorage.setItem('token', token)
