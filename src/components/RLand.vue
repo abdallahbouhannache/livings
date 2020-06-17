@@ -89,8 +89,8 @@ export default {
   methods: {
     init() {
       /* mapping props to localdata */
-      let tableOfProducts = Object.assign({}, this.prodList);
-      this.listOfPrds = tableOfProducts;
+      // let tableOfProducts = Object.assign({}, this.prodList);
+      this.listOfPrds = [...this.prodList.slice(1)];
     },
     checkProduct() {
       console.log("Rland");

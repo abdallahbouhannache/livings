@@ -3,6 +3,12 @@ import App from "./App.vue";
 import router from "./router"; // loads the router component
 import store from "./store"; // loads the store management vuex utility
 
+import 'vue-toast-notification/dist/theme-default.css';
+import VueToast from 'vue-toast-notification';
+
+Vue.use(VueToast);
+
+
 Vue.config.productionTip = false;
 Vue.config.devtools = true
 

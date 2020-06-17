@@ -68,13 +68,14 @@ $grey: #8f949b;
   position: absolute;
   width: 100%;
   height: 100%;
-  transform: scaleX(-1);
+  // transform: scaleX(-1);
   z-index: -1;
-  background: url(https://source.unsplash.com/Qmox1MkYDnY/900x500) no-repeat;
+  background: url("../assets/pictures/jeans.jpg") no-repeat;
+  background-size: contain;
 }
 
 form {
-  width: 60%;
+  width: 50%;
   height: 100%;
   padding: 20px 33px 20px 20px;
   flex-direction: column;
@@ -132,7 +133,7 @@ form .form-group:last-child {
     cursor: pointer;
   }
   button.active {
-    opacity: 0.5;
+    opacity: 0.8;
     cursor: default;
   }
 

@@ -40,12 +40,17 @@ export default {
       return this.hidePassword ? "password" : "text";
     },
     passwordIcon() {
-      return this.hidePassword ? "fa-eye" : "fa-eye-slash";
+      return this.hidePassword ? "fa-eye-slash" : "fa-eye";
     }
   },
   methods: {
     doLogin() {
-      alert("Not implemented yet :O");
+      this.$toast.open({
+        message: "not available Yet!",
+        position: "top",
+        type: "warning",
+        duration: 1500
+      });
     }
   }
 };

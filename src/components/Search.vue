@@ -5,7 +5,7 @@
     <div class="level-left">
       <div class="level-item">
         <p class="subtitle is-5">
-          <strong>Piece Detachee</strong>
+          <strong>😃 shopping</strong>
         </p>
       </div>
       <div class="level-item">
@@ -13,7 +13,7 @@
           <p class="control p1">
             <input class="input" type="text" placeholder="trouver la piece!" />
           </p>
-          <p class="control p2">
+          <p class="control p2" @click="notAvailable">
             <button class="button is-success">Search</button>
           </p>
         </div>
@@ -22,35 +22,42 @@
 
     <!-- Right side -->
     <div class="level-right">
-      <p class="level-item">
-        <strong>All</strong>
-      </p>
-      <p class="level-item">
+      <h1 class="level-item">
+        <strong>☀️Shop</strong>
+      </h1>
+      <p class="level-item" @click="notAvailable">
         <router-link to="#">
           <i class="fas fa-upload fa-lg">publier</i>
         </router-link>
       </p>
 
-      <p class="level-item">
+      <p class="level-item" @click="notAvailable">
         <router-link to="#">
           <i class="fas fa-concierge-bell fa-lg">trouver</i>
         </router-link>
       </p>
-      <p class="level-item">
+      <p class="level-item" @click="notAvailable">
         <router-link to="#">
           <i class="fas fa-shopping-basket fa-lg">panier</i>
         </router-link>
       </p>
-      <router-link to="/404">
-        <i class="fas fa-info-circle fa-lg"></i>
-      </router-link>
     </div>
   </nav>
 </template>
 
 <script>
 export default {
-  name: "Navbar"
+  name: "Navbar",
+  methods: {
+    notAvailable: function() {
+      this.$toast.open({
+        message: "not available now!",
+        position: "top",
+        type: "warning",
+        duration: 1500
+      });
+    }
+  }
 };
 </script>
 

@@ -86,9 +86,14 @@ export default {
     }
   },
   mounted() {
-    // this.Lproducts = Array.from([...this.products]);
-    this.Lproducts = this.products;
+    // this.Lproducts = [...this.products];
+    // this.Lproducts = this.products;
     // console.log(this.Lproducts);
+  },
+  watch: {
+    products: function() {
+      this.Lproducts = [...this.products.slice(1)];
+    }
   }
 };
 </script>

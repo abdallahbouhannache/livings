@@ -113,4 +113,8 @@ export default {
 </script>
 
 <style scoped>
+.videoPlyer {
+  position: relative;
+  left: 25px;
+}
 </style>

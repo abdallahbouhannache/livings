@@ -7,10 +7,10 @@
     <div class="tile is-ancestor">
       <!-- the left small division -->
 
-      <LeftLand :products="this.productArry"></LeftLand>
+      <LeftLand :products="productArry"></LeftLand>
 
       <!-- the right big division -->
-      <RLand :prodList="this.VideoProdsArry" picBgUrl="a.jpg"></RLand>
+      <RLand :prodList="VideoProdsArry" picBgUrl="a.jpg"></RLand>
     </div>
   </div>
 </template>
@@ -53,7 +53,7 @@ export default {
     this.fetchVideoProduct(VIDEOURL);
     setTimeout(() => {
       // console.clear();
-      // console.log(this.productArry[1]);
+      // console.log(this.productArry.slice(1));
     }, 2000);
   }
 };
